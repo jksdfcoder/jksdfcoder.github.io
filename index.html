@@ -8,10 +8,10 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <a class="skip" href="#work">Skip to work</a>
+  <a class="skip" href="#main">Skip to content</a>
 
-  <header class="nav">
-    <a class="wordmark" href="#top">Zhang Yu</a>
+  <header>
+    <a class="wordmark" href="#intro">Zhang Yu</a>
     <nav aria-label="Primary">
       <a href="#work">See work</a>
       <a href="#about">About</a>
@@ -19,8 +19,8 @@
     </nav>
   </header>
 
-  <main id="top">
-    <section class="hero" aria-labelledby="who">
+  <main id="main" tabindex="-1">
+    <section class="hero" id="intro" aria-labelledby="who">
       <div class="hero-copy">
         <h1 id="who">Zhang Yu</h1>
         <p class="role">Library systems and research-information tooling</p>
@@ -41,7 +41,7 @@
 
     <section id="work" class="work" aria-labelledby="work-h">
       <h2 id="work-h">Work</h2>
-      <p class="work-intro">Four public pieces. Internal CRIS, talent, and scoring pipelines stay private.</p>
+      <p class="work-intro">Public demos and method notes. Internal CRIS, talent, and scoring pipelines stay private.</p>
 
       <article class="entry">
         <img src="work/affi.jpg" width="1400" height="900" fetchpriority="high" alt="Affiliation formatter: HKU dictionary search, ROR, and a Word-ready author block preview.">
@@ -50,8 +50,8 @@
           <p>Client-side author-affiliation blocks. HKU unit dictionary plus ROR, journal templates, copy to Word or LaTeX. Nothing leaves the browser except ROR queries.</p>
           <p class="meta">React, Vite, ROR API</p>
           <p class="links">
-            <a href="https://jksdfcoder.github.io/correct_your_affi_name/">Live</a>
-            <a href="https://github.com/jksdfcoder/correct_your_affi_name">Code</a>
+            <a href="https://jksdfcoder.github.io/correct_your_affi_name/">Live <span class="visually-hidden">affiliation formatter</span></a>
+            <a href="https://github.com/jksdfcoder/correct_your_affi_name">Source <span class="visually-hidden">affiliation formatter</span></a>
           </p>
         </div>
       </article>
@@ -63,33 +63,57 @@
           <p>One Nuxt shell, two synthetic datasets: profile-merge flags and affiliation-string drift. Rank mismatch, high volume, and out-of-field rings. No real people.</p>
           <p class="meta">Nuxt, ECharts, static fixtures</p>
           <p class="links">
-            <a href="https://jksdfcoder.github.io/scholar-review-lab/">Live</a>
-            <a href="https://github.com/jksdfcoder/scholar-review-lab">Code</a>
+            <a href="https://jksdfcoder.github.io/scholar-review-lab/mismerge/">Merge review</a>
+            <a href="https://jksdfcoder.github.io/scholar-review-lab/authorship/">Authorship review</a>
+            <a href="https://github.com/jksdfcoder/scholar-review-lab">Source <span class="visually-hidden">author identity lab</span></a>
           </p>
         </div>
       </article>
 
-      <article class="entry">
+      <article class="stack">
         <img src="work/asia.jpg" width="1400" height="900" loading="lazy" alt="Asia Top 8 research impact dashboard with citation percentile bars by institution.">
         <div>
           <h3>Asia research dashboard</h3>
           <p>Vue SPA comparing research metrics across Asia Top 8. Filters, faculty mapping, and export. Bundled JSON, no vendor login in the public repo.</p>
           <p class="meta">Vue 3, Vite</p>
           <p class="links">
-            <a href="https://jksdfcoder.github.io/us-news-asia-dashboard/">Live</a>
-            <a href="https://github.com/jksdfcoder/us-news-asia-dashboard">Code</a>
+            <a href="https://jksdfcoder.github.io/us-news-asia-dashboard/">Live <span class="visually-hidden">Asia research dashboard</span></a>
+            <a href="https://github.com/jksdfcoder/us-news-asia-dashboard">Source <span class="visually-hidden">Asia research dashboard</span></a>
           </p>
         </div>
       </article>
 
-      <article class="method">
-        <h3>Retraction merge</h3>
-        <p>Retraction Watch is source of truth. Crossref fills missing dates and adds notices Watch does not have yet. Designed for a 6-hour cycle. The dump is not hosted.</p>
-        <p class="meta">Python, Crossref API</p>
-        <p class="links">
-          <a href="https://github.com/jksdfcoder/open-retraction-merge">Code</a>
-        </p>
-      </article>
+      <div class="notes" aria-labelledby="notes-h">
+        <h3 id="notes-h">Method notes</h3>
+        <p class="work-intro">No hosted dumps and no campus login. Code and writeups only.</p>
+
+        <article class="note">
+          <h4>Retraction merge</h4>
+          <p>Retraction Watch is source of truth. Crossref fills missing dates and adds notices Watch does not have yet. Designed for a 6-hour cycle.</p>
+          <p class="meta">Python, Crossref API</p>
+          <p class="links">
+            <a href="https://github.com/jksdfcoder/open-retraction-merge">Source: open-retraction-merge</a>
+          </p>
+        </article>
+
+        <article class="note">
+          <h4>Scholar identifiers</h4>
+          <p>Agent skill. Outbound links and DOI author-slots over name search. ORCID, OpenAlex, Crossref, Wikidata. Fictional examples. No campus CRIS.</p>
+          <p class="meta">Skill, public APIs</p>
+          <p class="links">
+            <a href="https://github.com/jksdfcoder/open-scholar-ids">Source: open-scholar-ids</a>
+          </p>
+        </article>
+
+        <article class="note">
+          <h4>Grist chat sidecar</h4>
+          <p>Nginx, stock Grist, and a FastAPI sidecar. Guest cookie and a same-origin chat widget. Optional SQL. Keep API keys out of git.</p>
+          <p class="meta">Nginx, Grist, FastAPI</p>
+          <p class="links">
+            <a href="https://github.com/jksdfcoder/grist-chat-sidecar">Source: grist-chat-sidecar</a>
+          </p>
+        </article>
+      </div>
     </section>
 
     <section id="about" class="about" aria-labelledby="about-h">
@@ -97,7 +121,7 @@
       <div class="about-body">
         <p>I work on research-information systems at the University of Hong Kong. Most of that is operational: identifiers, affiliations, and dashboards that a librarian can actually open.</p>
         <p>This site is the public slice. GitHub holds the demos and method notes. Campus systems, scoring, and named researcher files are not here.</p>
-        <p lang="zh-Hant">张钰。图书馆系统与科研信息工具。公开仓是作品集，不是内部仓库镜像。</p>
+        <p lang="zh-Hans">张钰。图书馆系统与科研信息工具。公开仓是作品集，不是内部仓库镜像。</p>
       </div>
     </section>
 
@@ -106,7 +130,7 @@
       <p>Available for library systems and data-services roles.</p>
       <p class="actions">
         <a class="cta" href="mailto:zhangyu3@hku.hk">Email Zhang Yu</a>
-        <a class="ghost" href="https://github.com/jksdfcoder">GitHub</a>
+        <a class="ghost" href="https://github.com/jksdfcoder">GitHub profile</a>
       </p>
     </section>
   </main>
