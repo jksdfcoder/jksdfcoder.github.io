@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Zhang Yu. Library systems and research-information tooling. Public demos for affiliation formatting, author-identity review, and research dashboards.">
+  <title>Zhang Yu. Library systems</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#work">Skip to work</a>
+
+  <header class="nav">
+    <a class="wordmark" href="#top">Zhang Yu</a>
+    <nav aria-label="Primary">
+      <a href="#work">See work</a>
+      <a href="#about">About</a>
+      <a class="cta" href="mailto:zhangyu3@hku.hk">Email Zhang Yu</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="who">
+      <div class="hero-copy">
+        <h1 id="who">Zhang Yu</h1>
+        <p class="role">Library systems and research-information tooling</p>
+        <p class="lede">I build the review UIs libraries use on author names, affiliations, and research metrics.</p>
+        <p class="actions">
+          <a class="cta" href="#work">See work</a>
+          <a class="ghost" href="mailto:zhangyu3@hku.hk">Email Zhang Yu</a>
+        </p>
+      </div>
+      <aside class="masthead" aria-label="Sample author block">
+        <p class="authors">Zhang Yu<sup>1</sup></p>
+        <ol>
+          <li>University Libraries, research information systems, Hong Kong</li>
+        </ol>
+        <p class="mast-note">Same problem the affiliation tool solves: a block that pastes into Word.</p>
+      </aside>
+    </section>
+
+    <section id="work" class="work" aria-labelledby="work-h">
+      <h2 id="work-h">Work</h2>
+      <p class="work-intro">Four public pieces. Internal CRIS, talent, and scoring pipelines stay private.</p>
+
+      <article class="entry">
+        <img src="work/affi.jpg" width="1400" height="900" fetchpriority="high" alt="Affiliation formatter: HKU dictionary search, ROR, and a Word-ready author block preview.">
+        <div>
+          <h3>Affiliation formatter</h3>
+          <p>Client-side author-affiliation blocks. HKU unit dictionary plus ROR, journal templates, copy to Word or LaTeX. Nothing leaves the browser except ROR queries.</p>
+          <p class="meta">React, Vite, ROR API</p>
+          <p class="links">
+            <a href="https://jksdfcoder.github.io/correct_your_affi_name/">Live</a>
+            <a href="https://github.com/jksdfcoder/correct_your_affi_name">Code</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="entry flip">
+        <img src="work/lab.jpg" width="1400" height="900" loading="lazy" alt="Scatter chart of synthetic scholars with faculty filters and publication timeline.">
+        <div>
+          <h3>Author identity lab</h3>
+          <p>One Nuxt shell, two synthetic datasets: profile-merge flags and affiliation-string drift. Rank mismatch, high volume, and out-of-field rings. No real people.</p>
+          <p class="meta">Nuxt, ECharts, static fixtures</p>
+          <p class="links">
+            <a href="https://jksdfcoder.github.io/scholar-review-lab/">Live</a>
+            <a href="https://github.com/jksdfcoder/scholar-review-lab">Code</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="entry">
+        <img src="work/asia.jpg" width="1400" height="900" loading="lazy" alt="Asia Top 8 research impact dashboard with citation percentile bars by institution.">
+        <div>
+          <h3>Asia research dashboard</h3>
+          <p>Vue SPA comparing research metrics across Asia Top 8. Filters, faculty mapping, and export. Bundled JSON, no vendor login in the public repo.</p>
+          <p class="meta">Vue 3, Vite</p>
+          <p class="links">
+            <a href="https://jksdfcoder.github.io/us-news-asia-dashboard/">Live</a>
+            <a href="https://github.com/jksdfcoder/us-news-asia-dashboard">Code</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="method">
+        <h3>Retraction merge</h3>
+        <p>Retraction Watch is source of truth. Crossref fills missing dates and adds notices Watch does not have yet. Designed for a 6-hour cycle. The dump is not hosted.</p>
+        <p class="meta">Python, Crossref API</p>
+        <p class="links">
+          <a href="https://github.com/jksdfcoder/open-retraction-merge">Code</a>
+        </p>
+      </article>
+    </section>
+
+    <section id="about" class="about" aria-labelledby="about-h">
+      <h2 id="about-h">About</h2>
+      <div class="about-body">
+        <p>I work on research-information systems at the University of Hong Kong. Most of that is operational: identifiers, affiliations, and dashboards that a librarian can actually open.</p>
+        <p>This site is the public slice. GitHub holds the demos and method notes. Campus systems, scoring, and named researcher files are not here.</p>
+        <p lang="zh-Hant">张钰。图书馆系统与科研信息工具。公开仓是作品集，不是内部仓库镜像。</p>
+      </div>
+    </section>
+
+    <section id="contact" class="contact" aria-labelledby="contact-h">
+      <h2 id="contact-h">Contact</h2>
+      <p>Available for library systems and data-services roles.</p>
+      <p class="actions">
+        <a class="cta" href="mailto:zhangyu3@hku.hk">Email Zhang Yu</a>
+        <a class="ghost" href="https://github.com/jksdfcoder">GitHub</a>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Zhang Yu. Public demos only.</p>
+  </footer>
+</body>
+</html>
