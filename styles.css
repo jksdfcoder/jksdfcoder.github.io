@@ -24,6 +24,64 @@
   }
 }
 
+html[data-contrast="high"],
+html:has([name="contrast"][value="high"]:checked) {
+  --bg: #ffffff;
+  --ink: #000000;
+  --muted: #000000;
+  --line: #000000;
+  --accent: #000000;
+  --accent-ink: #ffffff;
+  --paper: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-contrast="high"],
+  html:has([name="contrast"][value="high"]:checked) {
+    --bg: #000000;
+    --ink: #ffffff;
+    --muted: #ffffff;
+    --line: #ffffff;
+    --accent: #ffffff;
+    --accent-ink: #000000;
+    --paper: #000000;
+  }
+}
+
+html[data-gray="on"],
+html:has([name="gray"][value="on"]:checked) {
+  --accent: var(--ink);
+  --accent-ink: var(--bg);
+}
+
+html[data-gray="on"] img,
+html:has([name="gray"][value="on"]:checked) img {
+  filter: grayscale(1);
+}
+
+html[data-type="lg"],
+html:has([name="type"][value="lg"]:checked) {
+  font-size: 125%;
+}
+
+html[data-type="xl"],
+html:has([name="type"][value="xl"]:checked) {
+  font-size: 150%;
+}
+
+html[data-contrast="high"] a,
+html:has([name="contrast"][value="high"]:checked) a {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+html[data-contrast="high"] .cta,
+html[data-contrast="high"] .ghost,
+html:has([name="contrast"][value="high"]:checked) .cta,
+html:has([name="contrast"][value="high"]:checked) .ghost {
+  border: 2px solid var(--ink);
+}
+
 *,
 *::before,
 *::after {
@@ -110,6 +168,70 @@ main:focus {
 .skip:focus,
 .skip:focus-visible {
   top: 0.75rem;
+}
+
+.a11y {
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  padding: 0 1.25rem;
+}
+
+.a11y summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.a11y-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  align-items: end;
+  padding: 0 0 1rem;
+}
+
+.a11y-form fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.a11y-form legend {
+  font-weight: 600;
+  padding: 0;
+  margin: 0 0 0.15rem;
+}
+
+.a11y-form label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 44px;
+  margin-right: 0.85rem;
+  cursor: pointer;
+}
+
+.a11y-form input {
+  width: 1.15rem;
+  height: 1.15rem;
+  accent-color: var(--accent);
+}
+
+.a11y-form button {
+  min-height: 44px;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+  border-radius: var(--radius);
+}
+
+.a11y-form button:active {
+  transform: translateY(1px);
 }
 
 header {

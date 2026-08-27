@@ -6,9 +6,41 @@
   <meta name="description" content="Zhang Yu. Library systems and research-information tooling. Public demos for affiliation formatting, author-identity review, and research dashboards.">
   <title>Zhang Yu. Library systems</title>
   <link rel="stylesheet" href="styles.css">
+  <script>
+    try {
+      var s = JSON.parse(localStorage.getItem("a11y") || "{}");
+      var h = document.documentElement;
+      if (s.contrast === "high") h.dataset.contrast = "high";
+      if (s.gray === "on") h.dataset.gray = "on";
+      if (s.type === "lg" || s.type === "xl") h.dataset.type = s.type;
+    } catch (e) {}
+  </script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
+
+  <details class="a11y">
+    <summary>Accessibility settings</summary>
+    <form class="a11y-form" id="a11y-form">
+      <fieldset>
+        <legend>Contrast</legend>
+        <label><input type="radio" name="contrast" value="default" checked> Default contrast</label>
+        <label><input type="radio" name="contrast" value="high"> High contrast</label>
+      </fieldset>
+      <fieldset>
+        <legend>Colour</legend>
+        <label><input type="radio" name="gray" value="off" checked> Full colour</label>
+        <label><input type="radio" name="gray" value="on"> Black and white</label>
+      </fieldset>
+      <fieldset>
+        <legend>Text size</legend>
+        <label><input type="radio" name="type" value="md" checked> Default size</label>
+        <label><input type="radio" name="type" value="lg"> Large</label>
+        <label><input type="radio" name="type" value="xl"> Larger</label>
+      </fieldset>
+      <button type="reset">Reset</button>
+    </form>
+  </details>
 
   <header>
     <a class="wordmark" href="#intro">Zhang Yu</a>
@@ -138,5 +170,34 @@
   <footer>
     <p>Zhang Yu. Public demos only.</p>
   </footer>
+  <script>
+    (function () {
+      // ponytail: localStorage only; cookie/sync if this ever needs more than one device
+      var form = document.getElementById("a11y-form");
+      var h = document.documentElement;
+      if (!form) return;
+      function apply() {
+        var c = form.contrast.value;
+        var g = form.gray.value;
+        var t = form.type.value;
+        if (c === "high") h.dataset.contrast = "high"; else delete h.dataset.contrast;
+        if (g === "on") h.dataset.gray = "on"; else delete h.dataset.gray;
+        if (t === "md") delete h.dataset.type; else h.dataset.type = t;
+        localStorage.setItem("a11y", JSON.stringify({ contrast: c, gray: g, type: t }));
+      }
+      form.contrast.value = h.dataset.contrast || "default";
+      form.gray.value = h.dataset.gray || "off";
+      form.type.value = h.dataset.type || "md";
+      form.addEventListener("change", apply);
+      form.addEventListener("reset", function () {
+        setTimeout(function () {
+          delete h.dataset.contrast;
+          delete h.dataset.gray;
+          delete h.dataset.type;
+          localStorage.removeItem("a11y");
+        }, 0);
+      });
+    })();
+  </script>
 </body>
 </html>
