@@ -25,7 +25,7 @@
   }
 }
 
-html[data-theme="dark"],
+html[data-theme="dark"]:not(:has([name="theme"][value="light"]:checked)),
 html:has([name="theme"][value="dark"]:checked) {
   --bg: #12181e;
   --ink: #e8edf1;
@@ -37,7 +37,7 @@ html:has([name="theme"][value="dark"]:checked) {
   color-scheme: dark;
 }
 
-html[data-theme="light"],
+html[data-theme="light"]:not(:has([name="theme"][value="dark"]:checked)),
 html:has([name="theme"][value="light"]:checked) {
   --bg: #e8edf1;
   --ink: #15202b;
@@ -279,9 +279,15 @@ main:focus {
 .a11y-opt input {
   position: absolute;
   inset: 0;
+  z-index: 1;
   opacity: 0;
   margin: 0;
   cursor: pointer;
+}
+
+.a11y-opt svg,
+.a11y-opt .visually-hidden {
+  pointer-events: none;
 }
 
 .a11y-opt:focus-within,
