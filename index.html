@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Zhang Yu. Library systems and research-information tooling. Public demos for affiliation formatting, author-identity review, and research dashboards.">
+  <meta name="description" content="Zhang Yu. Automation tools and data analysis dashboards. Public demos for affiliation formatting, author-identity review, and research dashboards.">
   <title>Zhang Yu. Library systems</title>
   <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#1d1d1f" media="(prefers-color-scheme: dark)">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=3">
   <script>
     try {
       var s = JSON.parse(localStorage.getItem("a11y") || "{}");
@@ -126,7 +126,7 @@
       <canvas class="fx" id="fx" aria-hidden="true"></canvas>
       <div class="hero-copy">
         <h1 id="who">Zhang Yu</h1>
-        <p class="role">Library systems and research-information tooling</p>
+        <p class="role">Automation tool & Data analysis dashboard</p>
         <p class="lede">I build the review UIs libraries use on author names, affiliations, and research metrics.</p>
         <p class="actions">
           <a class="cta" href="#work">See work</a>
@@ -134,7 +134,9 @@
         </p>
       </div>
       <figure class="hero-shot">
-        <img src="work/affi.jpg" width="1400" height="900" fetchpriority="high" alt="Affiliation formatter: HKU dictionary search, ROR, and a Word-ready author block preview.">
+        <a href="#work-affi" aria-label="Affiliation formatter: HKU dictionary search, ROR, and a Word-ready author block preview.">
+          <img src="work/affi.jpg" width="1400" height="900" fetchpriority="high" alt="Affiliation formatter: HKU dictionary search, ROR, and a Word-ready author block preview.">
+        </a>
       </figure>
     </section>
 
@@ -142,11 +144,10 @@
       <h2 id="work-h">Work</h2>
       <p class="work-intro">Public demos and methods are open. Internal CRIS, talent, and scoring systems stay private.</p>
 
-      <article class="entry">
+      <article class="entry" id="work-affi">
         <img src="work/affi.jpg" width="1400" height="900" loading="lazy" alt="Affiliation formatter: HKU dictionary search, ROR, and a Word-ready author block preview.">
         <div>
-          <p class="kicker">Affiliation formatter</p>
-          <h3>Copy affiliations without retyping</h3>
+          <h3>Affiliation formatter<br><span class="kind">(Automation Tool)</span></h3>
           <p class="detail">Build author-affiliation blocks from HKU units and ROR, then copy to Word or LaTeX. Processing stays client-side except ROR queries.</p>
           <p class="meta">React, Vite, ROR API</p>
           <p class="links">
@@ -156,11 +157,10 @@
         </div>
       </article>
 
-      <article class="entry flip">
+      <article class="entry flip" id="work-lab">
         <img src="work/lab.jpg" width="1400" height="900" loading="lazy" alt="Scatter chart of synthetic scholars with faculty filters and publication timeline.">
         <div>
-          <p class="kicker">Author identity lab</p>
-          <h3>Scholar Profile Monitor</h3>
+          <h3>Scholar Profile Monitor<br><span class="kind">(Dashboard)</span></h3>
           <p class="detail">Explore profile-merge flags and affiliation drift in one shell. Static fixtures are synthetic and describe no real people.</p>
           <p class="meta">Nuxt, ECharts, static fixtures</p>
           <p class="links">
@@ -171,11 +171,10 @@
         </div>
       </article>
 
-      <article class="stack">
+      <article class="stack" id="work-asia">
         <img src="work/asia.jpg" width="1400" height="900" loading="lazy" alt="Asia Top 8 research impact dashboard with citation percentile bars by institution.">
         <div>
-          <p class="kicker">Asia research dashboard</p>
-          <h3>US News analysis</h3>
+          <h3>US News analysis<br><span class="kind">(Dashboard)</span></h3>
           <p class="detail">Filter Asia Top 8 metrics, map faculties, and export results. Bundled JSON keeps the public app free of vendor logins.</p>
           <p class="meta">Vue 3, Vite</p>
           <p class="links">
@@ -185,11 +184,10 @@
         </div>
       </article>
 
-      <article class="stack">
+      <article class="stack" id="work-grist">
         <img src="work/grist.jpg" width="1769" height="835" loading="lazy" alt="Grist window: People sheet of fictional emails beside a Chat widget with the sidecar mascot.">
         <div>
-          <p class="kicker">Grist chat sidecar</p>
-          <h3>Chat beside the working table</h3>
+          <h3>Chat<br><span class="kind">(Automation Tool)</span></h3>
           <p class="detail">Same-origin widget next to the sheet. This Pages demo is a static fixture. Docker compose runs unmodified Grist, guest cookies, and live models. Keys stay out of git.</p>
           <p class="meta">Nginx, Grist, FastAPI</p>
           <p class="links">
@@ -203,11 +201,10 @@
         <h3 id="notes-h">Method notes</h3>
         <p class="work-intro">No hosted dumps, no campus login. Code and writeups only.</p>
 
-        <article class="note shot">
+        <article class="note shot" id="work-retraction">
           <img src="work/rw-gitlab.jpg" width="1400" height="787" loading="lazy" alt="Crossref GitLab project retraction-watch-data, public, with daily retraction_watch.csv.">
           <div>
-            <p class="kicker">Retraction merge</p>
-            <h4>Watch fields win every merge</h4>
+            <h4>Retraction merge<br><span class="kind">(Data Process Pipeline)</span></h4>
             <p class="detail">Merge the official Watch dump with Crossref updates on a six-hour cycle. The repository ships the method, never the resulting dump.</p>
             <p class="meta">Python, Crossref API</p>
             <p class="links">
@@ -217,11 +214,10 @@
           </div>
         </article>
 
-        <article class="note shot flip">
+        <article class="note shot flip" id="work-ids">
           <img src="work/ids-swagger.jpg" width="1400" height="787" loading="lazy" alt="Crossref REST API Swagger UI showing GET /works/{doi} and GET /works.">
           <div>
-            <p class="kicker">Scholar identifiers</p>
-            <h4>Prove an identifier before confirming</h4>
+            <h4>Scholar identifiers<br><span class="kind">(self-host API server)</span></h4>
             <p class="detail">Trace outbound links and claimed DOI author-slots across public APIs. Fictional examples only. Identifiers never come from co-authors.</p>
             <p class="meta">Skill, public APIs</p>
             <p class="links">
@@ -238,6 +234,7 @@
       <div class="about-body">
         <p>I work on research-information systems at the University of Hong Kong. I build those systems myself: data pipelines, the front and back of dashboards and data-management tools, and open APIs. I have also been combining AI with tools we already use so routine work can run on its own, and I have designed products the team uses internally.</p>
         <p>This site is the public slice. GitHub holds the demos and method notes. Campus systems, scoring, and named researcher files are not here.</p>
+        <p>Disclaimer: these example projects do not use real sensitive data. They are only a small part of my work, but they show how wide that work is.</p>
       </div>
     </section>
 
@@ -307,6 +304,50 @@
         });
       }, { threshold: 0.16 });
       document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+    })();
+    (function () {
+      // ponytail: 4s hero cycle from #work images; pause on hover / reduced-motion
+      var img = document.querySelector(".hero-shot img");
+      var a = img && img.parentElement;
+      if (!img || !a || a.tagName !== "A") return;
+      var slides = [];
+      document.querySelectorAll("#work article[id] > img").forEach(function (el) {
+        slides.push({
+          src: el.getAttribute("src"),
+          alt: el.getAttribute("alt"),
+          href: "#" + el.parentElement.id
+        });
+      });
+      if (slides.length < 2) return;
+      var i = 0;
+      var t = 0;
+      function show(n) {
+        i = ((n % slides.length) + slides.length) % slides.length;
+        img.src = slides[i].src;
+        img.alt = slides[i].alt;
+        a.href = slides[i].href;
+        a.setAttribute("aria-label", slides[i].alt);
+      }
+      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+      function stop() {
+        clearInterval(t);
+        t = 0;
+      }
+      function start() {
+        stop();
+        if (reduce.matches) return;
+        t = setInterval(function () { show(i + 1); }, 4000);
+      }
+      a.addEventListener("mouseenter", stop);
+      a.addEventListener("mouseleave", start);
+      a.addEventListener("focusin", stop);
+      a.addEventListener("focusout", start);
+      document.addEventListener("visibilitychange", function () {
+        if (document.hidden) stop();
+        else start();
+      });
+      reduce.addEventListener("change", start);
+      start();
     })();
     (function () {
       var canvas = document.getElementById("fx");

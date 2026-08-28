@@ -557,8 +557,21 @@ header a {
     0 24px 60px var(--shadow);
 }
 
+.hero-shot a {
+  display: block;
+  color: inherit;
+}
+
+.hero-shot a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
 .hero-shot img {
   width: 100%;
+  aspect-ratio: 14 / 9;
+  object-fit: cover;
+  object-position: center 18%;
   transform-origin: center;
 }
 
@@ -584,6 +597,10 @@ header a {
 .contact p {
   max-width: 65ch;
   color: var(--muted);
+}
+
+#work article {
+  scroll-margin-top: 5.5rem;
 }
 
 .entry {
@@ -653,14 +670,6 @@ header a {
   letter-spacing: -0.02em;
 }
 
-.kicker {
-  margin: 0 0 0.2rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  color: var(--muted);
-}
-
 .entry h3,
 .stack h3,
 .note h4 {
@@ -669,7 +678,17 @@ header a {
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1.12;
-  text-wrap: balance;
+}
+
+.entry h3 .kind,
+.stack h3 .kind,
+.note h4 .kind {
+  display: block;
+  margin-top: 0.28rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--muted);
 }
 
 .detail {
