@@ -174,6 +174,7 @@ main:focus {
 .a11y {
   position: relative;
   flex: 0 0 auto;
+  touch-action: manipulation;
 }
 
 .a11y summary {
@@ -205,10 +206,11 @@ main:focus {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  min-width: 16rem;
+  min-width: 12.5rem;
   padding: 0.85rem 1rem;
   background: var(--paper);
   border: 1px solid var(--line);
+  overscroll-behavior: contain;
 }
 
 .a11y-form fieldset {
@@ -220,37 +222,62 @@ main:focus {
 .a11y-form legend {
   font-weight: 600;
   padding: 0;
-  margin: 0 0 0.15rem;
+  margin: 0 0 0.35rem;
 }
 
-.a11y-form label {
+.a11y-opts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.a11y-opt,
+.a11y-form button {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  margin: 0;
+  padding: 0;
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  min-height: 44px;
-  margin-right: 0.85rem;
+  justify-content: center;
   cursor: pointer;
-}
-
-.a11y-form input {
-  width: 1.15rem;
-  height: 1.15rem;
-  accent-color: var(--accent);
-}
-
-.a11y-form button {
-  min-height: 44px;
-  padding: 0.4rem 0.85rem;
-  border: 1px solid var(--ink);
-  background: transparent;
+  border: 1px solid var(--line);
+  background: var(--paper);
   color: var(--ink);
   font: inherit;
-  cursor: pointer;
   border-radius: var(--radius);
 }
 
-.a11y-form button:active {
+.a11y-opt input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.a11y-opt:focus-within,
+.a11y-form button:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.a11y-opt:has(:checked) {
+  border-color: var(--ink);
+}
+
+.a11y-form button:active,
+.a11y summary:active {
   transform: translateY(1px);
+}
+
+@media (hover: hover) {
+  .a11y summary:hover,
+  .a11y-opt:hover,
+  .a11y-form button:hover {
+    border-color: var(--ink);
+  }
 }
 
 header {

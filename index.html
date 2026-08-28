@@ -30,24 +30,81 @@
           <path d="M5.5 20c1.4-4 4-6.25 6.5-6.25S17.1 16 18.5 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
         </svg>
       </summary>
-      <form class="a11y-form" id="a11y-form">
+      <form class="a11y-form" id="a11y-form" autocomplete="off">
       <fieldset>
         <legend>Contrast</legend>
-        <label><input type="radio" name="contrast" value="default" checked> Default contrast</label>
-        <label><input type="radio" name="contrast" value="high"> High contrast</label>
+        <div class="a11y-opts">
+          <label class="a11y-opt">
+            <input type="radio" name="contrast" value="default" checked>
+            <span class="visually-hidden">Default contrast</span>
+            <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="7.25" fill="none" stroke="currentColor" stroke-width="1.75"/>
+            </svg>
+          </label>
+          <label class="a11y-opt">
+            <input type="radio" name="contrast" value="high">
+            <span class="visually-hidden">High contrast</span>
+            <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="7.25" fill="none" stroke="currentColor" stroke-width="1.75"/>
+              <path d="M12 4.75v14.5A7.25 7.25 0 0 0 12 4.75z" fill="currentColor"/>
+            </svg>
+          </label>
+        </div>
       </fieldset>
       <fieldset>
         <legend>Colour</legend>
-        <label><input type="radio" name="gray" value="off" checked> Full colour</label>
-        <label><input type="radio" name="gray" value="on"> Black and white</label>
+        <div class="a11y-opts">
+          <label class="a11y-opt">
+            <input type="radio" name="gray" value="off" checked>
+            <span class="visually-hidden">Full colour</span>
+            <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="9" cy="10" r="3.1" fill="none" stroke="currentColor" stroke-width="1.75"/>
+              <circle cx="15" cy="10" r="3.1" fill="none" stroke="currentColor" stroke-width="1.75"/>
+              <circle cx="12" cy="14.5" r="3.1" fill="none" stroke="currentColor" stroke-width="1.75"/>
+            </svg>
+          </label>
+          <label class="a11y-opt">
+            <input type="radio" name="gray" value="on">
+            <span class="visually-hidden">Black and white</span>
+            <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="5" y="6" width="14" height="12" fill="none" stroke="currentColor" stroke-width="1.75"/>
+              <path d="M12 6v12" stroke="currentColor" stroke-width="1.75"/>
+            </svg>
+          </label>
+        </div>
       </fieldset>
       <fieldset>
-        <legend>Text size</legend>
-        <label><input type="radio" name="type" value="md" checked> Default size</label>
-        <label><input type="radio" name="type" value="lg"> Large</label>
-        <label><input type="radio" name="type" value="xl"> Larger</label>
+        <legend>Text Size</legend>
+        <div class="a11y-opts">
+          <label class="a11y-opt">
+            <input type="radio" name="type" value="md" checked>
+            <span class="visually-hidden">Default size</span>
+            <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+              <text x="12" y="16" text-anchor="middle" fill="currentColor" font-size="10" font-weight="700">A</text>
+            </svg>
+          </label>
+          <label class="a11y-opt">
+            <input type="radio" name="type" value="lg">
+            <span class="visually-hidden">Large</span>
+            <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+              <text x="12" y="17" text-anchor="middle" fill="currentColor" font-size="13" font-weight="700">A</text>
+            </svg>
+          </label>
+          <label class="a11y-opt">
+            <input type="radio" name="type" value="xl">
+            <span class="visually-hidden">Larger</span>
+            <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+              <text x="12" y="18" text-anchor="middle" fill="currentColor" font-size="16" font-weight="700">A</text>
+            </svg>
+          </label>
+        </div>
       </fieldset>
-      <button type="reset">Reset</button>
+      <button type="reset" aria-label="Reset display">
+        <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M5 12a7 7 0 1 0 2-4.9" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+          <path d="M5 4.5V9h4.5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
       </form>
     </details>
       <a href="#work">See work</a>
