@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Zhang Yu. Library systems and research-information tooling. Public demos for affiliation formatting, author-identity review, and research dashboards.">
   <title>Zhang Yu. Library systems</title>
+  <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1d1d1f" media="(prefers-color-scheme: dark)">
   <link rel="stylesheet" href="styles.css">
   <script>
     try {
@@ -121,6 +123,7 @@
 
   <main id="main" tabindex="-1">
     <section class="hero" id="intro" aria-labelledby="who">
+      <canvas class="fx" id="fx" aria-hidden="true"></canvas>
       <div class="hero-copy">
         <h1 id="who">Zhang Yu</h1>
         <p class="role">Library systems and research-information tooling</p>
@@ -130,6 +133,9 @@
           <a class="ghost" href="mailto:zhangyu3@hku.hk">Email Zhang Yu</a>
         </p>
       </div>
+      <figure class="hero-shot">
+        <img src="work/affi.jpg" width="1400" height="900" fetchpriority="high" alt="Affiliation formatter: HKU dictionary search, ROR, and a Word-ready author block preview.">
+      </figure>
     </section>
 
     <section id="work" class="work" aria-labelledby="work-h">
@@ -137,7 +143,7 @@
       <p class="work-intro">Public demos and method notes. Internal CRIS, talent, and scoring pipelines stay private.</p>
 
       <article class="entry">
-        <img src="work/affi.jpg" width="1400" height="900" fetchpriority="high" alt="Affiliation formatter: HKU dictionary search, ROR, and a Word-ready author block preview.">
+        <img src="work/affi.jpg" width="1400" height="900" loading="lazy" alt="Affiliation formatter: HKU dictionary search, ROR, and a Word-ready author block preview.">
         <div>
           <h3>Affiliation formatter</h3>
           <p>Client-side author-affiliation blocks. HKU unit dictionary plus ROR, journal templates, copy to Word or LaTeX. Nothing leaves the browser except ROR queries.</p>
@@ -249,7 +255,10 @@
       form.contrast.value = h.dataset.contrast || "default";
       form.theme.value = h.dataset.theme || "auto";
       form.type.value = h.dataset.type || "md";
-      form.addEventListener("change", apply);
+      form.addEventListener("change", function () {
+        apply();
+        if (window.__fxReset) window.__fxReset();
+      });
       form.addEventListener("reset", function () {
         setTimeout(function () {
           delete h.dataset.contrast;
@@ -257,8 +266,113 @@
           delete h.dataset.gray;
           delete h.dataset.type;
           localStorage.removeItem("a11y");
+          if (window.__fxReset) window.__fxReset();
         }, 0);
       });
+    })();
+    (function () {
+      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+      document.querySelectorAll(".entry, .stack, .notes").forEach(function (el) {
+        el.classList.add("reveal");
+      });
+      function show(el) { el.classList.add("is-in"); }
+      if (reduce.matches || !("IntersectionObserver" in window)) {
+        document.querySelectorAll(".reveal").forEach(show);
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            show(e.target);
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.16 });
+      document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+    })();
+    (function () {
+      var canvas = document.getElementById("fx");
+      if (!canvas || !canvas.getContext) return;
+      var ctx = canvas.getContext("2d");
+      var dots = [];
+      var raf = 0;
+      var running = false;
+      function allowed() {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return false;
+        if (document.documentElement.dataset.contrast === "high") return false;
+        if (document.querySelector('[name="contrast"][value="high"]:checked')) return false;
+        return true;
+      }
+      function accent() {
+        return getComputedStyle(document.documentElement).getPropertyValue("--accent").trim() || "#165a63";
+      }
+      function resize() {
+        var r = canvas.parentElement.getBoundingClientRect();
+        var dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = Math.max(1, r.width * dpr);
+        canvas.height = Math.max(1, r.height * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+      function seed() {
+        var r = canvas.parentElement.getBoundingClientRect();
+        var n = Math.round(Math.min(56, Math.max(18, r.width / 28)));
+        dots = [];
+        var i;
+        for (i = 0; i < n; i++) {
+          dots.push({
+            x: Math.random() * r.width,
+            y: Math.random() * r.height,
+            r: 0.6 + Math.random() * 2.2,
+            vx: (Math.random() - 0.5) * 0.28,
+            vy: -0.12 - Math.random() * 0.22,
+            a: 0.12 + Math.random() * 0.28
+          });
+        }
+      }
+      function tick() {
+        if (!running) return;
+        var r = canvas.parentElement.getBoundingClientRect();
+        ctx.clearRect(0, 0, r.width, r.height);
+        ctx.fillStyle = accent();
+        var i, d;
+        for (i = 0; i < dots.length; i++) {
+          d = dots[i];
+          d.x += d.vx;
+          d.y += d.vy;
+          if (d.y < -8) { d.y = r.height + 8; d.x = Math.random() * r.width; }
+          if (d.x < -8) d.x = r.width + 8;
+          if (d.x > r.width + 8) d.x = -8;
+          ctx.globalAlpha = d.a;
+          ctx.beginPath();
+          ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.globalAlpha = 1;
+        raf = requestAnimationFrame(tick);
+      }
+      function stop() {
+        running = false;
+        cancelAnimationFrame(raf);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+      function start() {
+        if (!allowed()) { stop(); return; }
+        resize();
+        seed();
+        if (!running) {
+          running = true;
+          tick();
+        }
+      }
+      window.__fxReset = start;
+      window.addEventListener("resize", function () {
+        if (running) { resize(); seed(); }
+      });
+      document.addEventListener("visibilitychange", function () {
+        if (document.hidden) stop();
+        else start();
+      });
+      start();
     })();
   </script>
 </body>
