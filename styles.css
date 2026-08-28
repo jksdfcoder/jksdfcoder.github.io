@@ -625,11 +625,10 @@ header a {
 }
 
 .note.shot img {
-  width: 13rem;
-  aspect-ratio: 4 / 3;
+  width: 100%;
+  aspect-ratio: 16 / 10;
   object-fit: cover;
   object-position: center 18%;
-  box-shadow: 0 10px 24px var(--shadow);
 }
 
 @media (hover: hover) {
@@ -703,11 +702,11 @@ header a {
 
 .notes {
   margin-top: 1rem;
-  padding: 0.25rem 1.25rem 0.5rem;
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  box-shadow: 0 12px 32px var(--shadow);
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .notes > .work-intro {
@@ -721,13 +720,13 @@ header a {
 
 .note.shot {
   display: grid;
-  grid-template-columns: 13rem 1fr;
-  gap: 1.15rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.75rem;
   align-items: center;
 }
 
 .note.shot.flip {
-  grid-template-columns: 1fr 13rem;
+  grid-template-columns: 1fr 1fr;
 }
 
 .note.shot.flip img {
@@ -796,7 +795,7 @@ footer {
   }
 
   .note.shot img {
-    width: min(16rem, 100%);
+    width: 100%;
   }
 
   .hero {
