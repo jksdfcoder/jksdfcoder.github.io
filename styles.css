@@ -13,7 +13,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]):not(:has([name="theme"][value="light"]:checked)) {
     --bg: #12181e;
     --ink: #e8edf1;
     --muted: #c5ced6;
@@ -21,7 +21,32 @@
     --accent: #7eb8bf;
     --accent-ink: #12181e;
     --paper: #1a222b;
+    color-scheme: dark;
   }
+}
+
+html[data-theme="dark"],
+html:has([name="theme"][value="dark"]:checked) {
+  --bg: #12181e;
+  --ink: #e8edf1;
+  --muted: #c5ced6;
+  --line: #2a3540;
+  --accent: #7eb8bf;
+  --accent-ink: #12181e;
+  --paper: #1a222b;
+  color-scheme: dark;
+}
+
+html[data-theme="light"],
+html:has([name="theme"][value="light"]:checked) {
+  --bg: #e8edf1;
+  --ink: #15202b;
+  --muted: #2c3844;
+  --line: #c5ced6;
+  --accent: #165a63;
+  --accent-ink: #f4f7f8;
+  --paper: #f4f7f8;
+  color-scheme: light;
 }
 
 html[data-contrast="high"],
@@ -36,8 +61,8 @@ html:has([name="contrast"][value="high"]:checked) {
 }
 
 @media (prefers-color-scheme: dark) {
-  html[data-contrast="high"],
-  html:has([name="contrast"][value="high"]:checked) {
+  html:not([data-theme="light"]):not(:has([name="theme"][value="light"]:checked))[data-contrast="high"],
+  html:not([data-theme="light"]):not(:has([name="theme"][value="light"]:checked)):has([name="contrast"][value="high"]:checked) {
     --bg: #000000;
     --ink: #ffffff;
     --muted: #ffffff;
@@ -48,15 +73,17 @@ html:has([name="contrast"][value="high"]:checked) {
   }
 }
 
-html[data-gray="on"],
-html:has([name="gray"][value="on"]:checked) {
-  --accent: var(--ink);
-  --accent-ink: var(--bg);
-}
-
-html[data-gray="on"] img,
-html:has([name="gray"][value="on"]:checked) img {
-  filter: grayscale(1);
+html[data-theme="dark"][data-contrast="high"],
+html[data-theme="dark"]:has([name="contrast"][value="high"]:checked),
+html:has([name="theme"][value="dark"]:checked)[data-contrast="high"],
+html:has([name="theme"][value="dark"]:checked):has([name="contrast"][value="high"]:checked) {
+  --bg: #000000;
+  --ink: #ffffff;
+  --muted: #ffffff;
+  --line: #ffffff;
+  --accent: #ffffff;
+  --accent-ink: #000000;
+  --paper: #000000;
 }
 
 html[data-type="lg"],

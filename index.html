@@ -11,7 +11,7 @@
       var s = JSON.parse(localStorage.getItem("a11y") || "{}");
       var h = document.documentElement;
       if (s.contrast === "high") h.dataset.contrast = "high";
-      if (s.gray === "on") h.dataset.gray = "on";
+      if (s.theme === "light" || s.theme === "dark") h.dataset.theme = s.theme;
       if (s.type === "lg" || s.type === "xl") h.dataset.type = s.type;
     } catch (e) {}
   </script>
@@ -52,23 +52,29 @@
         </div>
       </fieldset>
       <fieldset>
-        <legend>Colour</legend>
+        <legend>Theme</legend>
         <div class="a11y-opts">
           <label class="a11y-opt">
-            <input type="radio" name="gray" value="off" checked>
-            <span class="visually-hidden">Full colour</span>
+            <input type="radio" name="theme" value="auto" checked>
+            <span class="visually-hidden">Match system</span>
             <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
-              <circle cx="9" cy="10" r="3.1" fill="none" stroke="currentColor" stroke-width="1.75"/>
-              <circle cx="15" cy="10" r="3.1" fill="none" stroke="currentColor" stroke-width="1.75"/>
-              <circle cx="12" cy="14.5" r="3.1" fill="none" stroke="currentColor" stroke-width="1.75"/>
+              <rect x="4" y="5.5" width="16" height="11" fill="none" stroke="currentColor" stroke-width="1.75"/>
+              <path d="M8 20h8M12 16.5V20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
             </svg>
           </label>
           <label class="a11y-opt">
-            <input type="radio" name="gray" value="on">
-            <span class="visually-hidden">Black and white</span>
+            <input type="radio" name="theme" value="light">
+            <span class="visually-hidden">Light</span>
             <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
-              <rect x="5" y="6" width="14" height="12" fill="none" stroke="currentColor" stroke-width="1.75"/>
-              <path d="M12 6v12" stroke="currentColor" stroke-width="1.75"/>
+              <circle cx="12" cy="12" r="3.25" fill="none" stroke="currentColor" stroke-width="1.75"/>
+              <path d="M12 3.5v2.25M12 18.25V20.5M3.5 12h2.25M18.25 12H20.5M5.6 5.6l1.6 1.6M16.8 16.8l1.6 1.6M5.6 18.4l1.6-1.6M16.8 7.2l1.6-1.6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+            </svg>
+          </label>
+          <label class="a11y-opt">
+            <input type="radio" name="theme" value="dark">
+            <span class="visually-hidden">Dark</span>
+            <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M15.5 5.8a7.25 7.25 0 1 0 2.7 12.7 6.2 6.2 0 0 1-2.7-12.7z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/>
             </svg>
           </label>
         </div>
@@ -240,20 +246,22 @@
       if (!form) return;
       function apply() {
         var c = form.contrast.value;
-        var g = form.gray.value;
+        var th = form.theme.value;
         var t = form.type.value;
         if (c === "high") h.dataset.contrast = "high"; else delete h.dataset.contrast;
-        if (g === "on") h.dataset.gray = "on"; else delete h.dataset.gray;
+        if (th === "light" || th === "dark") h.dataset.theme = th; else delete h.dataset.theme;
         if (t === "md") delete h.dataset.type; else h.dataset.type = t;
-        localStorage.setItem("a11y", JSON.stringify({ contrast: c, gray: g, type: t }));
+        delete h.dataset.gray;
+        localStorage.setItem("a11y", JSON.stringify({ contrast: c, theme: th, type: t }));
       }
       form.contrast.value = h.dataset.contrast || "default";
-      form.gray.value = h.dataset.gray || "off";
+      form.theme.value = h.dataset.theme || "auto";
       form.type.value = h.dataset.type || "md";
       form.addEventListener("change", apply);
       form.addEventListener("reset", function () {
         setTimeout(function () {
           delete h.dataset.contrast;
+          delete h.dataset.theme;
           delete h.dataset.gray;
           delete h.dataset.type;
           localStorage.removeItem("a11y");
