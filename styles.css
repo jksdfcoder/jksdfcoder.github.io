@@ -609,38 +609,76 @@ header a {
 }
 
 .stack img,
-.entry img {
+.entry img,
+.note.shot img {
+  height: auto;
+  display: block;
   border: 1px solid color-mix(in srgb, var(--line) 80%, transparent);
   background: var(--paper);
   border-radius: var(--radius);
   box-shadow: 0 18px 40px var(--shadow);
 }
 
+.stack img,
+.entry img {
+  width: 100%;
+}
+
+.note.shot img {
+  width: 13rem;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center 18%;
+  box-shadow: 0 10px 24px var(--shadow);
+}
+
 @media (hover: hover) {
   .entry img,
   .stack img,
+  .note.shot img,
   .hero-shot img {
     transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .entry img:hover,
   .stack img:hover,
+  .note.shot img:hover,
   .hero-shot:hover img {
     transform: scale(1.02);
   }
 }
 
-.entry h3,
-.stack h3,
-.notes h3,
-.note h4 {
+.notes > h3 {
   margin: 0 0 0.5rem;
   font-size: 1.35rem;
   letter-spacing: -0.02em;
 }
 
+.kicker {
+  margin: 0 0 0.2rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+}
+
+.entry h3,
+.stack h3,
 .note h4 {
-  font-size: 1.15rem;
+  margin: 0 0 0.4rem;
+  font-size: clamp(1.5rem, 2.3vw, 2.05rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+  text-wrap: balance;
+}
+
+.detail {
+  margin: 0 0 0.7rem;
+  max-width: 46ch;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--muted);
 }
 
 .meta {
@@ -679,6 +717,21 @@ header a {
 .note {
   padding: 1.15rem 0;
   border-top: 1px solid var(--line);
+}
+
+.note.shot {
+  display: grid;
+  grid-template-columns: 13rem 1fr;
+  gap: 1.15rem;
+  align-items: center;
+}
+
+.note.shot.flip {
+  grid-template-columns: 1fr 13rem;
+}
+
+.note.shot.flip img {
+  order: 2;
 }
 
 .note:first-of-type {
@@ -729,10 +782,21 @@ footer {
 
   .hero,
   .entry,
-  .entry.flip {
+  .entry.flip,
+  .note.shot,
+  .note.shot.flip {
     grid-template-columns: 1fr;
     min-height: 0;
     padding-top: 1.5rem;
+  }
+
+  .note.shot,
+  .note.shot.flip {
+    padding-top: 1.15rem;
+  }
+
+  .note.shot img {
+    width: min(16rem, 100%);
   }
 
   .hero {
@@ -740,7 +804,8 @@ footer {
     padding-bottom: 2.5rem;
   }
 
-  .entry.flip img {
+  .entry.flip img,
+  .note.shot.flip img {
     order: 0;
   }
 

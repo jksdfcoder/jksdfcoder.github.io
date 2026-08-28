@@ -140,13 +140,14 @@
 
     <section id="work" class="work" aria-labelledby="work-h">
       <h2 id="work-h">Work</h2>
-      <p class="work-intro">Public demos and method notes. Internal CRIS, talent, and scoring pipelines stay private.</p>
+      <p class="work-intro">Public demos and methods are open. Internal CRIS, talent, and scoring systems stay private.</p>
 
       <article class="entry">
         <img src="work/affi.jpg" width="1400" height="900" loading="lazy" alt="Affiliation formatter: HKU dictionary search, ROR, and a Word-ready author block preview.">
         <div>
-          <h3>Affiliation formatter</h3>
-          <p>Client-side author-affiliation blocks. HKU unit dictionary plus ROR, journal templates, copy to Word or LaTeX. Nothing leaves the browser except ROR queries.</p>
+          <p class="kicker">Affiliation formatter</p>
+          <h3>Copy affiliations without retyping</h3>
+          <p class="detail">Build author-affiliation blocks from HKU units and ROR, then copy to Word or LaTeX. Processing stays client-side except ROR queries.</p>
           <p class="meta">React, Vite, ROR API</p>
           <p class="links">
             <a href="https://jksdfcoder.github.io/correct_your_affi_name/">Live <span class="visually-hidden">affiliation formatter</span></a>
@@ -158,8 +159,9 @@
       <article class="entry flip">
         <img src="work/lab.jpg" width="1400" height="900" loading="lazy" alt="Scatter chart of synthetic scholars with faculty filters and publication timeline.">
         <div>
-          <h3>Author identity lab</h3>
-          <p>One Nuxt shell, two synthetic datasets: profile-merge flags and affiliation-string drift. Rank mismatch, high volume, and out-of-field rings. No real people.</p>
+          <p class="kicker">Author identity lab</p>
+          <h3>Review suspicious author profiles</h3>
+          <p class="detail">Explore profile-merge flags and affiliation drift in one shell. Static fixtures are synthetic and describe no real people.</p>
           <p class="meta">Nuxt, ECharts, static fixtures</p>
           <p class="links">
             <a href="https://jksdfcoder.github.io/scholar-review-lab/mismerge/">Merge review</a>
@@ -172,8 +174,9 @@
       <article class="stack">
         <img src="work/asia.jpg" width="1400" height="900" loading="lazy" alt="Asia Top 8 research impact dashboard with citation percentile bars by institution.">
         <div>
-          <h3>Asia research dashboard</h3>
-          <p>Vue SPA comparing research metrics across Asia Top 8. Filters, faculty mapping, and export. Bundled JSON, no vendor login in the public repo.</p>
+          <p class="kicker">Asia research dashboard</p>
+          <h3>Compare Asia Top 8 metrics</h3>
+          <p class="detail">Filter Asia Top 8 metrics, map faculties, and export results. Bundled JSON keeps the public app free of vendor logins.</p>
           <p class="meta">Vue 3, Vite</p>
           <p class="links">
             <a href="https://jksdfcoder.github.io/us-news-asia-dashboard/">Live <span class="visually-hidden">Asia research dashboard</span></a>
@@ -184,33 +187,47 @@
 
       <div class="notes" aria-labelledby="notes-h">
         <h3 id="notes-h">Method notes</h3>
-        <p class="work-intro">No hosted dumps and no campus login. Code and writeups only.</p>
+        <p class="work-intro">No hosted dumps, no campus login. Code and writeups only.</p>
 
-        <article class="note">
-          <h4>Retraction merge</h4>
-          <p>Retraction Watch is source of truth. Crossref fills missing dates and adds notices Watch does not have yet. Designed for a 6-hour cycle.</p>
-          <p class="meta">Python, Crossref API</p>
-          <p class="links">
-            <a href="https://github.com/jksdfcoder/open-retraction-merge">Source: open-retraction-merge</a>
-          </p>
+        <article class="note shot">
+          <img src="work/rw-gitlab.jpg" width="1400" height="787" loading="lazy" alt="Crossref GitLab project retraction-watch-data, public, with daily retraction_watch.csv.">
+          <div>
+            <p class="kicker">Retraction merge</p>
+            <h4>Watch fields win every merge</h4>
+            <p class="detail">Merge the official Watch dump with Crossref updates on a six-hour cycle. The repository ships the method, never the resulting dump.</p>
+            <p class="meta">Python, Crossref API</p>
+            <p class="links">
+              <a href="https://gitlab.com/crossref/retraction-watch-data">Dataset <span class="visually-hidden">Retraction Watch on Crossref GitLab</span></a>
+              <a href="https://github.com/jksdfcoder/open-retraction-merge">Source: open-retraction-merge</a>
+            </p>
+          </div>
         </article>
 
-        <article class="note">
-          <h4>Scholar identifiers</h4>
-          <p>Agent skill. Outbound links and DOI author-slots over name search. ORCID, OpenAlex, Crossref, Wikidata. Fictional examples. No campus CRIS.</p>
-          <p class="meta">Skill, public APIs</p>
-          <p class="links">
-            <a href="https://github.com/jksdfcoder/open-scholar-ids">Source: open-scholar-ids</a>
-          </p>
+        <article class="note shot flip">
+          <img src="work/ids-swagger.jpg" width="1400" height="787" loading="lazy" alt="Crossref REST API Swagger UI showing GET /works/{doi} and GET /works.">
+          <div>
+            <p class="kicker">Scholar identifiers</p>
+            <h4>Prove an identifier before confirming</h4>
+            <p class="detail">Trace outbound links and claimed DOI author-slots across public APIs. Fictional examples only. Identifiers never come from co-authors.</p>
+            <p class="meta">Skill, public APIs</p>
+            <p class="links">
+              <a href="https://api.crossref.org/">Crossref Swagger</a>
+              <a href="https://github.com/jksdfcoder/open-scholar-ids">Source: open-scholar-ids</a>
+            </p>
+          </div>
         </article>
 
-        <article class="note">
-          <h4>Grist chat sidecar</h4>
-          <p>Nginx, stock Grist, and a FastAPI sidecar. Guest cookie and a same-origin chat widget. Optional SQL. Keep API keys out of git.</p>
-          <p class="meta">Nginx, Grist, FastAPI</p>
-          <p class="links">
-            <a href="https://github.com/jksdfcoder/grist-chat-sidecar">Source: grist-chat-sidecar</a>
-          </p>
+        <article class="note shot">
+          <img src="work/grist.jpg" width="1400" height="787" loading="lazy" alt="GitHub repo grist-chat-sidecar with nginx.conf, docker-compose, and guest-cookie README.">
+          <div>
+            <p class="kicker">Grist chat sidecar</p>
+            <h4>Chat beside the working table</h4>
+            <p class="detail">Serve chat as a same-origin Grist widget with guest cookies and no OAuth. Grist stays unmodified, and API keys stay out of git.</p>
+            <p class="meta">Nginx, Grist, FastAPI</p>
+            <p class="links">
+              <a href="https://github.com/jksdfcoder/grist-chat-sidecar">Source: grist-chat-sidecar</a>
+            </p>
+          </div>
         </article>
       </div>
     </section>
